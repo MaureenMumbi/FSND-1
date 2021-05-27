@@ -11,6 +11,7 @@ import FormView from './components/FormView';
 import QuestionView from './components/QuestionView';
 import Header from './components/Header';
 import QuizView from './components/QuizView';
+import CategoriesView from './components/CategoriesView'
 
 
 class App extends Component {
@@ -23,7 +24,9 @@ class App extends Component {
           <Route path="/" exact component={QuestionView} />
           <Route path="/add" component={FormView} />
           <Route path="/play" component={QuizView} />
+          <Route path="/add_category" component={CategoriesView} />
           <Route component={QuestionView} />
+         
         </Switch>
       </Router>
     </div>

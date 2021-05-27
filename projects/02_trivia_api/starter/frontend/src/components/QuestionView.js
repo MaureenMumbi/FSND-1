@@ -26,6 +26,7 @@ class QuestionView extends Component {
       url: `/questions?page=${this.state.page}`, //TODO: update request URL
       type: "GET",
       success: (result) => {
+        console.log(JSON.stringify(result))
         this.setState({
           questions: result.questions,
           totalQuestions: result.total_questions,
@@ -118,6 +119,9 @@ class QuestionView extends Component {
       }
     }
   }
+  navTo(uri){
+    window.location.href = window.location.origin + uri;
+  }
 
   render() {
     return (
@@ -132,6 +136,7 @@ class QuestionView extends Component {
               </li>
             ))}
           </ul>
+          <h3 onClick={() => {this.navTo('/add_category')}}>Add a Category</h3>
           <Search submitSearch={this.submitSearch}/>
         </div>
         <div className="questions-list">
@@ -143,6 +148,7 @@ class QuestionView extends Component {
               answer={q.answer}
               category={this.state.categories[q.category]} 
               difficulty={q.difficulty}
+              rating={q.rating}
               questionAction={this.questionAction(q.id)}
             />
           ))}
